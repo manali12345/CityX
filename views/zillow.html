@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Locate the house</title>
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.js"></script>
+    
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    
+    <style>
+          
+      /* #map {
+
+      width: 49%;
+      margin-top: 100px;
+      margin-left: 50%;
+      margin-bottom: 10px;
+      max-height: 60%;
+      } */
+      .mapboxgl-canvas-container {
+        height: 70vh;
+      }
+      .marker {
+        background-image: url('/images/house-marker.jpg');
+        background-size: cover;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      /* .story-map {
+       overflow: hidden;
+} */
+      .mapboxgl-popup {
+        max-width: 200px;
+      }
+
+      .mapboxgl-popup-content {
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+      }
+      /* .bg-warning{
+        background-color:#d35400;
+      } */
+    </style>
+    <!-- <link rel="stylesheet" href="css/styles.css"> -->    
+  </head>
+  <body ng-app="Mashup" ng-controller="Controller">
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/">CityX</a>
+        </li>
+        
+      </ul>
+    </nav>
+    
+    <div class="container">
+      
+        <h4 style="text-align:center; margin-top:20px">Enter Zpid: </h4>
+        <input style="text-align:center" type="text" class="form-control"  ng-model="query" ng-model-options="{ debounce: 800 }" ng-change="fetchhome()" placeholder="example: 1111111"> 
+        
+        <div style="text-align:center; margin-top:20px; margin-bottom:10px" id="map" class="ml-4 col-md-11"></div>
+       
+      
+      <!-- <div class="row">
+          
+      </div> -->
+    </div>
+
+    <script src="/js/zillow.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+     </body>
+</html>

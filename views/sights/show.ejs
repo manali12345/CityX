@@ -1,0 +1,135 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3" style="margin:70px auto;">
+            <% if(currentUser){ %>
+            <div class="thumbnail">
+                <form action="/sights/<%=sight._id%>/contact" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="contact[name]" placeholder="Name" class="form-control">    
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="contact[email]" placeholder="Email" class="form-control">    
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="contact[number]" placeholder="Number" class="form-control">    
+                    </div>
+                    <div class="form-group">
+                    <input type="text"     name="contact[info]" placeholder="I am interested..." class="form-control">
+                    </div>
+                    <button class="btn-success btn-lg btn-block">Contact Agent!</button>
+                </form>
+            </div>
+            <% } %>
+            <br>
+            <br>
+
+            <div class="thumbnail">
+                <h4 style = "text-align: center;"><b><img src="https://www.freeiconspng.com/thumbs/rss-logo-icon-png/feed-orange-rss-social-icon--11.png" alt="rss logo" height="50" width="50"> News and Events</b></h4>
+                
+                <!-- start rss-feed code --> 
+<script type="text/javascript"> 
+
+rssfeed_url = new Array(); 
+rssfeed_url[0]="https://realty.economictimes.indiatimes.com/rss/residential"; rssfeed_url[1]="https://www.zillow.com/blog/feed/";  
+rssfeed_frame_width="252"; 
+rssfeed_frame_height="400"; 
+rssfeed_scroll="on"; 
+rssfeed_scroll_step="3"; 
+rssfeed_scroll_bar="off"; 
+rssfeed_target="_blank"; 
+rssfeed_font_size="14"; 
+rssfeed_font_face=""; 
+rssfeed_border="on"; 
+rssfeed_css_url="https://feed.surfing-waves.com/css/style6.css"; 
+rssfeed_title="on"; 
+rssfeed_title_name=""; 
+rssfeed_title_bgcolor="#3366ff"; 
+rssfeed_title_color="#fff"; 
+rssfeed_title_bgimage=""; 
+rssfeed_footer="off"; 
+rssfeed_footer_name="rss feed"; 
+rssfeed_footer_bgcolor="#fff"; 
+rssfeed_footer_color="#333"; 
+rssfeed_footer_bgimage=""; 
+rssfeed_item_title_length="50"; 
+rssfeed_item_title_color="#666"; 
+rssfeed_item_bgcolor="#fff"; 
+rssfeed_item_bgimage=""; 
+rssfeed_item_border_bottom="on"; 
+rssfeed_item_source_icon="off"; 
+rssfeed_item_date="off"; 
+rssfeed_item_description="on"; 
+rssfeed_item_description_length="120"; 
+rssfeed_item_description_color="#666"; 
+rssfeed_item_description_link_color="#333"; 
+rssfeed_item_description_tag="off"; 
+rssfeed_no_items="0"; 
+rssfeed_cache = "7854ef42b71564684e84b6f6bdff110f"; 
+//--> 
+</script> 
+<script type="text/javascript" src="//feed.surfing-waves.com/js/rss-feed.js"></script> 
+
+<!-- end rss-feed code -->
+
+                    </div>
+
+
+
+        </div>
+        <div class="col-md-9">
+            <div class="thumbnail" style="margin:70px auto;">
+                <img class="img-responsive" src="<%=sight.image%>">
+                <div class="caption-full">
+                    <h4 class="pull-right">$<%=sight.price %></h4>
+                    <h1><a><%=sight.name%></a></h1><span><h4><%=sight.city.charAt(0).toUpperCase()+sight.city.slice(1) %></h4></span>
+                    <p><%=sight.description %></p>
+                    <p>Location:<%=sight.location %></p>
+                    <p class="pull-right"><em>Submitted by-<%=sight.author.username %></em></p>
+                    <br>
+                </div>
+                <%if(currentUser && currentUser._id.equals(sight.author.id)){%>
+                <div>
+                    <a href="/sights/<%=sight._id%>/edit" class="btn btn-xs btn-warning">Edit</a>
+                    <form id="delete-form" action="/sights/<%=sight._id%>?_method=DELETE" method="POST">
+                        <button class="btn btn-xs btn-danger">Delete</button>
+                    </form>
+                </div>
+                <%}%>
+                
+            </div>
+            <div class="well">
+                <div class="text-right">
+                  <a href="/sights/<%=sight._id %>/comments/new" class="btn btn-success">Add new Comment?</a>  
+                </div>
+                <br>
+                <%sight.comments.forEach(function(comment){%>
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <strong><%=comment.author.username%></strong>
+                       
+                        <p>
+                            <%=comment.text%>
+                        </p>
+                    </div>
+                    
+                     <!--currentUser is set in app.js-->
+                    <%if(currentUser && currentUser._id.equals(comment.author.id)){ %>
+                    <div>
+                        <a class="btn btn-warning btn-xs" href="/sights/<%=sight._id%>/comments/<%=comment._id%>/edit">Edit!</a>
+                        <form id="delete-form" action="/sights/<%=sight._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-xs btn-danger">Delete</button>
+                        </form>
+                    </div>
+                    <% }%>
+                </div>
+                <%})%>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<% include ../partials/footer %>

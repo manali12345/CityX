@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<HTML>
+    <HEAD>
+        <TITLE>
+            CityX!!
+        </TITLE>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheet/main.css">
+        <link rel="stylesheet" href="/stylesheet/Landing.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta charset="utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Anton|Lobster" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=East+Sea+Dokdo|Indie+Flower|Ubuntu" rel="stylesheet">
+
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    </HEAD>
+    <BODY>
+                <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container-fluid">
+                        <a class="navbar-brand" href="/">
+                            CityX
+                        </a>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                            <li><a href="/rss"><img href="/rss"  src="https://www.freeiconspng.com/thumbs/rss-logo-icon-png/feed-orange-rss-social-icon--11.png" alt="rss logo" height="20" width="20"> </h4>
+                            </a></li>
+                            <li><a href="/sights">Sights</a></li>
+                            <li><a href="/api">Zillow API</a></li>
+                            
+                            <% if(!currentUser) {%>
+                            <li><a href="/login">Login</a></li>
+                            <li><a href="/register">Register</a></li>
+                            <%}else{ %>
+                            <li><a href="/logout">Logout</a></li>
+                            <li><a>Signed in as <%=currentUser.username %></a></li>
+                            <%}%>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+    </BODY>
+</HTML>
+
+
+      
