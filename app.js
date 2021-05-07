@@ -79,7 +79,8 @@ app.post("/jiberrish",function(req,res){
 });
 
 app.use(function (req,res,next){
-	res.status(404).sendFile("F:/KJSCE College/SEM 8/Advanced Internet Technologies/Lab/Project/CityX/views/err.html");
+    res.status(404).sendFile(path.join(__dirname, 'views/err.html'));
+	// res.status(404).sendFile("F:/KJSCE College/SEM 8/Advanced Internet Technologies/Lab/Project/CityX/views/err.html");
     // next();
 });
 

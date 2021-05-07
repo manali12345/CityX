@@ -73,9 +73,11 @@ router.get("/logout",function(req,res){
 
 
 router.get("/api",function(req,res){
-    res.sendFile("F:/KJSCE College/SEM 8/Advanced Internet Technologies/Lab/Project/CityX/views/zillow.html");
+    res.sendFile(path.join(__dirname, 'views/zillow.html'));
+    // res.sendFile(path.join(__dirname, ''));
 });
 
+// app.use(express.static(path.join(__dirname, 'dietguru-angular')));
 
 router.get("/zillow",function(req,res){
     
