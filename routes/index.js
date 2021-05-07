@@ -73,7 +73,7 @@ router.get("/logout",function(req,res){
 
 
 router.get("/api",function(req,res){
-    res.sendFile(path.join(__dirname, 'views/zillow.html'));
+    res.sendFile(path.join(__dirname, '../views/zillow.html'));
     // res.sendFile(path.join(__dirname, ''));
 });
 
