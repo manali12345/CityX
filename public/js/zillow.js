@@ -1,5 +1,5 @@
 
-const URL = "http://localhost:9000"
+
 const mapbox_URL= "pk.eyJ1IjoibWFuYWxpYWl0IiwiYSI6ImNrbGNuOWdxMzA5dGoydm1wbWlvZXAydHkifQ.zXkjbdHJKeTqxizARo5azQ";
 
 let app= angular.module("Mashup",[])
@@ -114,7 +114,7 @@ app.controller("Controller",($scope,$http)=>{
         // console.log($scope.query)
         if($scope.query.length>=1){
           $scope.info=`You searched for "${$scope.query}"`;
-          $http.get(`${URL}/zillow?zpid=${$scope.query}`,
+          $http.get(`/zillow?zpid=${$scope.query}`,
           {
               mode: "cors",
               
