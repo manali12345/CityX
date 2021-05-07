@@ -24,10 +24,11 @@
             <br>
             <br>
 
-            <div class="thumbnail">
-                <h4 style = "text-align: center;"><b><img src="https://www.freeiconspng.com/thumbs/rss-logo-icon-png/feed-orange-rss-social-icon--11.png" alt="rss logo" height="50" width="50"> News and Events</b></h4>
-                
-                <!-- start rss-feed code --> 
+<div class="thumbnail">
+<h4 style = "text-align: center;"><b><img src="https://www.freeiconspng.com/thumbs/rss-logo-icon-png/feed-orange-rss-social-icon--11.png" alt="rss logo" height="50" width="50"> News and Events</b></h4>
+
+<!-- start rss-feed code -->                 
+               
 <script type="text/javascript"> 
 
 rssfeed_url = new Array(); 
@@ -66,17 +67,13 @@ rssfeed_item_description_link_color="#333";
 rssfeed_item_description_tag="off"; 
 rssfeed_no_items="0"; 
 rssfeed_cache = "7854ef42b71564684e84b6f6bdff110f"; 
-//--> 
+
 </script> 
 <script type="text/javascript" src="//feed.surfing-waves.com/js/rss-feed.js"></script> 
 
 <!-- end rss-feed code -->
-
-                    </div>
-
-
-
-        </div>
+</div>
+</div>
         <div class="col-md-9">
             <div class="thumbnail" style="margin:70px auto;">
                 <img class="img-responsive" src="<%=sight.image%>">
@@ -84,7 +81,7 @@ rssfeed_cache = "7854ef42b71564684e84b6f6bdff110f";
                     <h4 class="pull-right">$<%=sight.price %></h4>
                     <h1><a><%=sight.name%></a></h1><span><h4><%=sight.city.charAt(0).toUpperCase()+sight.city.slice(1) %></h4></span>
                     <p><%=sight.description %></p>
-                    <p>Location:<%=sight.location %></p>
+                    <p>Location: <%=sight.location %></p>
                     <p class="pull-right"><em>Submitted by-<%=sight.author.username %></em></p>
                     <br>
                 </div>

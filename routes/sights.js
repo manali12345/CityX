@@ -1,9 +1,8 @@
 var express   = require("express");
 var router    = express.Router();  //using Routers to send the routing data out
 var Sight     = require("../models/sights");
-var comments     = require("../models/comment");
+var comments  = require("../models/comment");
 var middleware = require("../middleware/index");
-
 
 
 //Show all the sights
@@ -18,6 +17,7 @@ router.get("/",function(req,res){
     });
    
 });
+
 
 
 router.post("/",middleware.isLoggedIn,function(req,res){
@@ -48,13 +48,12 @@ router.post("/",middleware.isLoggedIn,function(req,res){
 });
 
 
-
-
-
 // Show new form
 router.get("/new",middleware.isLoggedIn,function(req,res){
    res.render("sights/new");
 });
+
+
 
 //Show comments
 
@@ -63,33 +62,47 @@ router.get("/:id",function(req,res){
        if(err){
         //   console.log("There is an error");
           console.log(err);
+        //   next(err);
+        //   throw error();
        }else{
         //   console.log("Comment in found Sight="+foundsight.comments);
+           res.cookie("sight_id", req.params.id, {maxAge: 360000});
+        //    res.cookie("name", "manali", {maxAge: 360000});
            res.render("sights/show",{sight:foundsight,currentUser:req.user});
        }
     })
 });
+
+// router.use(function(req,res,next){
+//     res.send("here");
+// });
+// router.use(function (err, req, res, next) {
+//     console.log("error caught")
+//     res.status(500).send('Something broke!')
+//   })
+
+
 
 //EDIT
 router.get("/:id/edit",[middleware.isLoggedIn,middleware.checkUser],function(req,res){
     
     var val=req.params.id;
             Sight.findById(val,function(err,found){
-      if(err){
-          console.log(err)
-      }else{
-         var data={
-        author:found.name,
-        image:found.image,
-        description:found.description,
-        id:found._id,
-        location:found.location,
-        city    :found.city,
-        price   :found.price
+                if(err){
+                    console.log(err)
+                }else{
+                    var data={
+                        author:found.name,
+                        image:found.image,
+                        description:found.description,
+                        id:found._id,
+                        location:found.location,
+                        city    :found.city,
+                        price   :found.price
         
-    };
-         res.render("sights/edit",{data:data});
-      }
+                    };
+                    res.render("sights/edit",{data:data});
+                }
     });
    
 });
@@ -106,6 +119,33 @@ router.put("/:id",[middleware.isLoggedIn,middleware.checkUser],function(req,res)
         }
     })
 })
+
+
+
+
+//PATCH
+
+router.patch("/:id",function(req,res){
+
+    Sight.update(
+
+        {_id:req.params.id},
+
+        {$set:req.body},
+
+        function(err){
+
+            if(!err){
+
+                res.send("PATCH done");
+
+            }
+
+        }
+
+    );
+
+});
 
 
 
@@ -142,6 +182,12 @@ router.delete("/:id",[middleware.isLoggedIn,middleware.checkUser],function(req,r
              }
     })
 });
+
+// router.use("/",function (req,res,next){
+// 	res.status(404).send('Unable to find the requested resource!');
+// });
+
+
 
 //middleware in middleware directory
 

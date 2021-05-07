@@ -1,9 +1,8 @@
-var mongoose = require("mongoose");
 var Sight    = require("./models/sights");
-var comment  = require("./models/comment");
 
-    
-function seedDB(){
+module.exports = {
+
+clearall : function(){
     Sight.remove({},function(err){
     if(err){
         console.log("Error in removing!");
@@ -13,5 +12,6 @@ function seedDB(){
 
 }
 
-module.exports=seedDB;
+};
+
 

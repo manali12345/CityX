@@ -51,7 +51,7 @@ middlewareObj.isLoggedIn=function(req,res,next){
         return next();  //return next() is very important if you wont write it , it would keep on buffering over there only
     }else{
         console.log("Next ke baad!");
-    res.redirect("/login");
+        res.redirect("/login");
     }
     
 }
