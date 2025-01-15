@@ -12,7 +12,7 @@ var inspect  = require('eyes').inspector({maxLength: 50000})
 // });
 
 
-var zillow = new Zillow('X1-ZWz1gi4xfl3097_2ninr')
+var zillow = new Zillow('Zillow_API_ID')
 
 router.get("/rss",function(req,res){
     var id = req.cookies["sight_id"];
