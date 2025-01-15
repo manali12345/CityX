@@ -1,6 +1,6 @@
 
 
-const mapbox_URL= "pk.eyJ1IjoibWFuYWxpYWl0IiwiYSI6ImNrbGNuOWdxMzA5dGoydm1wbWlvZXAydHkifQ.zXkjbdHJKeTqxizARo5azQ";
+const mapbox_URL= "Mapbox_API_ID";
 
 let app= angular.module("Mashup",[])
 
